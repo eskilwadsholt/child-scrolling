@@ -19,11 +19,6 @@
     page
     is
     entered`
-
-    const debug = (s: string) => {
-        console.debug(s)
-        return s
-    } 
 </script>
 
 <h1>Child Scroll Page</h1>
@@ -32,7 +27,7 @@
 <main>
     {#each content.split('\n') as line}
         <div class="flex-child">
-            {debug(line)}
+            {line}
         </div>
     {/each}
 </main>
