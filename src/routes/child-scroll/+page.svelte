@@ -1,4 +1,11 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+    import { scroll } from '../../stores/scroll'
+
+    let main: HTMLElement
+
+    const saveScroll = () => $scroll = main.scrollTop
+
     const content = `This
     is
     just
@@ -19,12 +26,16 @@
     page
     is
     entered`
+
+    onMount(() => {
+        main.scroll({ top: $scroll })
+    })
 </script>
 
 <h1>Child Scroll Page</h1>
 
 <h2>Scroll element</h2>
-<main>
+<main bind:this={main} on:scroll={saveScroll}>
     {#each content.split('\n') as line}
         <div class="flex-child">
             {line}
